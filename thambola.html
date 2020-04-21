@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>TAMBOLA or TABELA...</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="jquery.min.js"></script>
+
+<script type="text/javascript">
+
+  window.onbeforeunload = function() {
+            return "you can not refresh this page";
+  }
+
+$( document ).ready(function() {
+$("#endDiv").hide();
+function shuffle(array) {
+    var currentIndex = array.length, temporaryValue, randomIndex;
+
+  // While there remain elements to shuffle...
+  while (0 !== currentIndex) {
+
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    // And swap it with the current element.
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+
+  return array;
+}
+var arr = [];
+    for(var i=1; i<=99; i++){
+      arr.push(i);
+    }
+    shuffle(arr);
+
+  function getRnd(m,x){
+    return Math.floor(Math.random() * (x-m)) + m; 
+  }
+
+  $("#thambola").on("click", function(){
+
+    var len = arr.length;
+    if(arr.length){
+      var randNo = arr.shift();
+      
+      $(".dot").html(randNo);
+      // $("#history").append("<tr><td>"+ randNo +"</td></tr>");
+      $("#endDiv").hide();
+    }
+    else{
+      $("#endDiv").show();
+    }
+    
+    
+  });
+
+
+});
+  
+
+</script>
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Style the header */
+header {
+  background-color: #283e4a;
+  padding: 30px;
+  text-align: center;
+  font-size: 35px;
+  color: white;
+}
+
+/* Create two columns/boxes that floats next to each other */
+nav {
+  float: left;
+  width: 30%;
+  height: 300px; /* only for demonstration, should be removed */
+  background: #ccc;
+  padding: 20px;
+}
+
+/* Style the list inside the menu */
+nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+article {
+  float: left;
+  padding: 40px 20px 20px 20px;
+  width: 100%;
+  background-color: #f1f1f1;
+}
+
+/* Clear floats after the columns */
+section:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.dot {
+  height: 205px;
+  width: 205px;
+  background-color: #eee;
+  border-radius: 50%;
+  display: inline-block;
+  font-size:120px;
+  line-height:1.6;
+  color:#ff9800;
+  border-color:orange;
+	border:10px solid;
+}
+
+/* Style the footer */
+footer {
+  background-color: #777;
+  padding: 20px 10px;
+  text-align: center;
+  color: white;
+}
+button{display: inline-block;
+    font-weight: 400;
+    color: #212529;
+    text-align: center;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-color: #b90054;
+    border: 1px solid transparent;
+    padding:10px 40px;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out; border:4px solid  #f44336; margin-top:40px; color:white }
+
+</style>
+</head>
+<body>
+
+
+
+<header>
+  <h2>Kya Bola... Yeh hai Tambola!</h2>
+</header>
+
+<section>
+
+  
+  <article>
+   
+    <div style="text-align:center">
+      <h3>Generate Tambola Number</h3>
+  <span class="dot">0</span>
+  
+  <div><button id="thambola">Generate number</button></div>
+  <div id="endDiv">End!</div>
+
+  <table id="history">
+    
+  </table>
+</div>
+  </article>
+</section>
+
+<footer>
+  <p>Khelo Tambola with family!</p>
+</footer>
+
+</body>
+</html>
